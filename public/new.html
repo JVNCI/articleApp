@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New article</title>
+  </head>
+  <body>
+    <h2>New Article</h2>
+    <div id="form">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" />
+      <label for="body">Body</label>
+      <input type="text" name="body" id="body" />
+      <label for="published">Published</label>
+      <input
+        type="checkbox"
+        name="published"
+        id="published"
+        class="published"
+      />
+      <button onclick="createArticle()">Add article</button>
+      <a href="index.html">Back to articles</a>
+    </div>
+  </body>
+
+  <script>
+    const title = document.getElementById("title");
+    const body = document.getElementById("body");
+    const published = document.getElementById("published");
+
+    const url = "http://localhost:3000/articles";
+
+    async function createArticle() {
+      const publishedChecked = published.checked ? true : false;
+
+      const data = {
+        title: title.value,
+        body: body.value,
+        published: publishedChecked,
+      };
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      window.location = "index.html";
+    }
+  </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show article</title>
+  </head>
+  <body onload="loadData()">
+    <div id="article"></div>
+    <button onclick="deleteArticle()">Delete article</button>
+    <a href="index.html">Back to articles</a>
+  </body>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get("id");
+
+    var url = `http://localhost:3000/articles/${articleId}`;
+
+    async function loadData() {
+      var response = await fetch(url, {
+        headers: { Accept: "application/json" },
+      });
+      //   console.log(await response.json());
+      var data = await response.json();
+      var articleDiv = document.getElementById("article");
+      articleDiv.innerHTML = `
+              <h3>${data.title}</h3>
+              <p>${data.body}</p>
+              <p>Published: ${data.published}<p>
+              <a href="edit.html?id=${articleId}">Edit article</a>
+              `;
+    }
+
+    async function deleteArticle() {
+      const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      window.location = "index.html";
+    }
+  </script>
+</html>

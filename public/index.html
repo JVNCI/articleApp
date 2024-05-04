@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article App</title>
+  </head>
+  <body onload="loadData()">
+    <h2>Articles</h2>
+    <a href="new.html">New article</a>
+    <div id="articles"></div>
+
+    <script>
+      async function loadData() {
+        var url = "http://localhost:3000/articles";
+        var response = await fetch(url, {
+          headers: { Accept: "application/json" },
+        });
+        // console.log(await response.json());
+        var data = await response.json();
+        var articlesDiv = document.getElementById("articles");
+        for (let i = 0; i < data.length; i++) {
+          const article = data[i];
+          const html = `
+            <h3>${article.title}</h3>
+            <p>${article.body}</p>
+            <p>Published: ${article.published}<p>
+            <a href="single-article.html?id=${article.id}">Show article</a>
+            `;
+          articlesDiv.innerHTML += html;
+        }
+      }
+    </script>
+  </body>
+</html>
