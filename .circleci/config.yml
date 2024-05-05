@@ -29,6 +29,9 @@ jobs:
       #     name: hello
       #     command: echo hello
       - run:
+          name: install-bundle
+          command: bundle install
+      - run:
           name: test-run
           command: rails test
       - setup_remote_docker
