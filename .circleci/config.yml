@@ -28,6 +28,9 @@ jobs:
       # - run:
       #     name: hello
       #     command: echo hello
+      - run:
+          name: test-run
+          command: rails test
       - setup_remote_docker
       - run:
           name: docker-login
