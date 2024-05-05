@@ -15,7 +15,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get("id");
 
-    var url = `http://localhost:3000/articles/${articleId}`;
+    var url = `http://16.16.25.134:3000/articles/${articleId}`;
+    // var url = `http://localhost:3000/articles/${articleId}`;
 
     async function loadData() {
       var response = await fetch(url, {
