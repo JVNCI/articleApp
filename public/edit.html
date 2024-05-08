@@ -64,6 +64,11 @@
         published: publishedChecked,
       };
 
+      if (data.title == "" || data.body == "") {
+        alert("invalid credentials");
+        return;
+      }
+
       const response = await fetch(url, {
         method: "PUT",
         headers: {

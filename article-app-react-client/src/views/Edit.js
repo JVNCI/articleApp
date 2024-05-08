@@ -52,7 +52,13 @@ function Edit() {
       .then(() => {
         navigate("/");
       })
-      .catch((err) => setError(err));
+      .catch((err) => {
+        if (err.response.status == 422) {
+          setError("title and body required");
+        } else {
+          setError("something went wrong :(");
+        }
+      });
   }
 
   function handleTitle(e) {
@@ -72,9 +78,16 @@ function Edit() {
 
   return (
     <div>
+      <h3>{error}</h3>
+      <h3 data-testid="edit title">Edit Article</h3>
       <p>{articleId}</p>
       <label htmlFor="title">Title:</label>
-      <input name="title" value={title} onChange={handleTitle}></input>
+      <input
+        name="title"
+        value={title}
+        onChange={handleTitle}
+        data-testid="editTitleInput"
+      ></input>
       <br />
       <label htmlFor="body">Body:</label>
       <input name="body" type="text" value={body} onChange={handleBody}></input>
@@ -86,7 +99,9 @@ function Edit() {
         onChange={handlePublished}
       ></input>
       <br />
-      <button onClick={editArticle}>Edit article</button>
+      <button onClick={editArticle} data-testid="editArticle">
+        Edit article
+      </button>
       <br />
       <Link to={"/articles/" + String(articleId)}>Show article</Link>
       <br />

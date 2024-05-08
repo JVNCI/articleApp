@@ -14,17 +14,18 @@ function ArticleList() {
     var response = await axios.get("http://localhost:3000/articles", {
       headers: { Accept: "application/json" },
     });
-    console.log(response.data);
+    // console.log(response.data);
     setArticleList(response.data);
   };
 
   return (
     <div>
+      <h2 data-testid="title">All Articles</h2>
       <Link to="/new">New article</Link>
       <ul>
         {articleList.map((article, index) => {
           return (
-            <li key={index}>
+            <li key={index} className="article">
               <Article
                 title={article.title}
                 body={article.body}

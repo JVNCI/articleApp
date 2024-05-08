@@ -47,13 +47,26 @@ function New() {
       .then(() => {
         navigate("/");
       })
-      .catch((err) => setError(err));
+      .catch((err) => {
+        if (err.response.status == 422) {
+          setError("title and body required");
+        } else {
+          setError("something went wrong :(");
+        }
+      });
   }
 
   return (
     <div>
+      <h3 data-testid="error">{error}</h3>
+      <h3 data-testid="new title">New Article</h3>
       <label htmlFor="title">Title:</label>
-      <input name="title" value={title} onChange={handleTitle}></input>
+      <input
+        name="title"
+        value={title}
+        onChange={handleTitle}
+        data-testid="title"
+      ></input>
       <br />
       <label htmlFor="body">Body:</label>
       <input name="body" type="text" value={body} onChange={handleBody}></input>
@@ -65,7 +78,9 @@ function New() {
         onChange={handlePublished}
       ></input>
       <br />
-      <button onClick={addArticle}>Add article</button>
+      <button onClick={addArticle} data-testid="addArticle">
+        Add article
+      </button>
       <br />
       <Link to={"/"}>Back to articles</Link>
     </div>
