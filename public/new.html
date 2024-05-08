@@ -46,18 +46,18 @@
       if (title.value == "" || body.value == "") {
         error.textContent = "Title and body required";
         return;
+      } else {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        window.location = "index.html";
       }
-
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      window.location = "index.html";
     }
   </script>
 </html>
