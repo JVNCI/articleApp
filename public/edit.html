@@ -64,8 +64,8 @@
         published: publishedChecked,
       };
 
-      if (data.title == "" || data.body == "") {
-        alert("invalid credentials");
+      if (title.value == "" || body.value == "") {
+        error.textContent = "Title and body required";
         return;
       }
 

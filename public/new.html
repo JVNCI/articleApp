@@ -8,6 +8,7 @@
   <body>
     <h2>New Article</h2>
     <div id="form">
+      <h3 id="error"></h3>
       <label for="title">Title</label>
       <input type="text" name="title" id="title" />
       <label for="body">Body</label>
@@ -25,6 +26,7 @@
   </body>
 
   <script>
+    const error = document.getElementById("error");
     const title = document.getElementById("title");
     const body = document.getElementById("body");
     const published = document.getElementById("published");
@@ -41,8 +43,8 @@
         published: publishedChecked,
       };
 
-      if (data.title == "" || data.body == "") {
-        alert("invalid credentials");
+      if (title.value == "" || body.value == "") {
+        error.textContent = "Title and body required";
         return;
       }
 
