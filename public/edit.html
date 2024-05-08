@@ -7,6 +7,7 @@
   </head>
   <body onload="loadData()">
     <h2>Edit Article</h2>
+    <h3 id="error"></h3>
     <div id="form">
       <label for="title">Title</label>
       <input type="text" name="title" id="title" />
@@ -35,6 +36,7 @@
     var url = `http://16.16.25.134:3000/articles/${articleId}`;
     // var url = `http://localhost:3000/articles/${articleId}`;
 
+    const error = document.getElementById("error");
     const title = document.getElementById("title");
     const body = document.getElementById("body");
     const published = document.getElementById("published");
@@ -66,7 +68,6 @@
 
       if (title.value == "" || body.value == "") {
         error.textContent = "Title and body required";
-        console.log("did it");
         return;
       }
 
