@@ -28,7 +28,7 @@ test("renders Article component correctly", () => {
 
   expect(title.textContent).toBe("test title");
   expect(body.textContent).toBe("test body");
-  expect(published.textContent).toBe("false");
+  expect(published.textContent).toBe("Published: false");
 });
 
 test("renders SingleArticle view correctly", () => {
