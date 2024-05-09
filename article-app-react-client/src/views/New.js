@@ -58,31 +58,42 @@ function New() {
 
   return (
     <div>
-      <h3 data-testid="error">{error}</h3>
-      <h3 data-testid="new title">New Article</h3>
-      <label htmlFor="title">Title:</label>
-      <input
-        name="title"
-        value={title}
-        onChange={handleTitle}
-        data-testid="title"
-      ></input>
-      <br />
-      <label htmlFor="body">Body:</label>
-      <input name="body" type="text" value={body} onChange={handleBody}></input>
-      <br />
-      <label htmlFor="published">Published:</label>
-      <input
-        type="checkbox"
-        name="published"
-        onChange={handlePublished}
-      ></input>
+      <h3 data-testid="error" className="error">
+        {error}
+      </h3>
+      <h2 data-testid="new title">New Article</h2>
+      <div className="form">
+        <label htmlFor="title">Title:</label>
+        <input
+          name="title"
+          value={title}
+          onChange={handleTitle}
+          data-testid="title"
+        ></input>
+        <br />
+        <label htmlFor="body">Body:</label>
+        <input
+          name="body"
+          type="text"
+          value={body}
+          onChange={handleBody}
+        ></input>
+        <br />
+        <label htmlFor="published">Published:</label>
+        <input
+          type="checkbox"
+          name="published"
+          onChange={handlePublished}
+        ></input>
+      </div>
       <br />
       <button onClick={addArticle} data-testid="addArticle">
         Add article
       </button>
       <br />
-      <Link to={"/"}>Back to articles</Link>
+      <Link to={"/"} className="link">
+        Back to articles
+      </Link>
     </div>
   );
 }

@@ -4,25 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit article</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body onload="loadData()">
+  <body onload="loadData()" id="body-div">
+    <h3 id="error" class="error"></h3>
     <h2>Edit Article</h2>
-    <h3 id="error"></h3>
-    <div id="form">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" />
-      <label for="body">Body</label>
-      <input type="text" name="body" id="body" />
-      <label for="published">Published</label>
-      <input
-        type="checkbox"
-        name="published"
-        id="published"
-        class="published"
-      />
-      <button onclick="updateArticle()">Update article</button>
-      <a href="index.html">Back to articles</a>
+    <div id="form" class="form">
+      <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+      </div>
+      <div>
+        <label for="body">Body</label>
+        <input type="text" name="body" id="body" />
+      </div>
+      <div>
+        <label for="published">Published</label>
+        <input
+          type="checkbox"
+          name="published"
+          id="published"
+          class="published"
+        />
+      </div>
     </div>
+    <button onclick="updateArticle()">Update article</button>
+    <a href="index.html">Back to articles</a>
   </body>
 
   <script>
@@ -30,7 +37,7 @@
     const articleId = urlParams.get("id");
 
     document.getElementById(
-      "form"
+      "body-div"
     ).innerHTML += `<a href="single-article.html?id=${articleId}">Show article</a>`;
 
     var url = `http://16.16.25.134:3000/articles/${articleId}`;

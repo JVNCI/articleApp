@@ -1,6 +1,8 @@
 body {
   background-color: rgb(57, 0, 110);
   padding: 2rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 h1,
@@ -17,7 +19,7 @@ label {
 }
 
 button,
-.link {
+a {
   display: inline-block;
   text-decoration: none;
   background-color: white;

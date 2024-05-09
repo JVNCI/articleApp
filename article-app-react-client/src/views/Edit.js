@@ -78,34 +78,45 @@ function Edit() {
 
   return (
     <div>
-      <h3>{error}</h3>
-      <h3 data-testid="edit title">Edit Article</h3>
-      <p>{articleId}</p>
-      <label htmlFor="title">Title:</label>
-      <input
-        name="title"
-        value={title}
-        onChange={handleTitle}
-        data-testid="editTitleInput"
-      ></input>
-      <br />
-      <label htmlFor="body">Body:</label>
-      <input name="body" type="text" value={body} onChange={handleBody}></input>
-      <br />
-      <label htmlFor="published">Published:</label>
-      <input
-        type="checkbox"
-        name="published"
-        onChange={handlePublished}
-      ></input>
+      <h3 className="error">{error}</h3>
+      <h2 data-testid="edit title">Edit Article</h2>
+      <div className="form">
+        <label htmlFor="title">Title:</label>
+        <input
+          name="title"
+          value={title}
+          onChange={handleTitle}
+          data-testid="editTitleInput"
+        ></input>
+        <br />
+        <label htmlFor="body">Body:</label>
+        <input
+          name="body"
+          type="text"
+          value={body}
+          onChange={handleBody}
+        ></input>
+        <br />
+        <label htmlFor="published">Published:</label>
+        <input
+          type="checkbox"
+          name="published"
+          onChange={handlePublished}
+        ></input>
+      </div>
+
       <br />
       <button onClick={editArticle} data-testid="editArticle">
-        Edit article
+        Update article
       </button>
       <br />
-      <Link to={"/articles/" + String(articleId)}>Show article</Link>
+      <Link to={"/articles/" + String(articleId)} className="link">
+        Show article
+      </Link>
       <br />
-      <Link to={"/"}>Back to articles</Link>
+      <Link to={"/"} className="link">
+        Back to articles
+      </Link>
     </div>
   );
 }

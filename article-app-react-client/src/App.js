@@ -1,3 +1,4 @@
+import "./App.css";
 import ArticleList from "./components/ArticleList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import New from "./views/New";

@@ -20,8 +20,10 @@ function ArticleList() {
 
   return (
     <div>
-      <h2 data-testid="title">All Articles</h2>
-      <Link to="/new">New article</Link>
+      <h1 data-testid="title">All Articles</h1>
+      <Link to="/new" className="link">
+        New article
+      </Link>
       <ul>
         {articleList.map((article, index) => {
           return (
@@ -30,9 +32,10 @@ function ArticleList() {
                 title={article.title}
                 body={article.body}
                 published={article.published}
-                id={article.id}
               />
-              <Link to={"articles/" + String(article.id)}>Show article</Link>
+              <Link to={"articles/" + String(article.id)} className="link">
+                Show article
+              </Link>
             </li>
           );
         })}

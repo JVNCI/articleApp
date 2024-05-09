@@ -1,10 +1,12 @@
 function Article(props) {
   return (
-    <div>
+    <div className="article-div">
       <h3 data-testid="title">{props.title}</h3>
       <p data-testid="body">{props.body}</p>
-      <p data-testid="published">{props.published ? "true" : "false"}</p>
-      <p data-testid="id">{props.id}</p>
+      <p data-testid="published">
+        <span className="published-bold">Published: </span>
+        {props.published ? "true" : "false"}
+      </p>
     </div>
   );
 }

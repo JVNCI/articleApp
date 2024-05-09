@@ -44,13 +44,18 @@ function SingleArticle() {
 
   return (
     <div>
-      <Article title={title} body={body} published={published} id={id} />
+      <h2 data-testid="single title">Single Article</h2>
+      <Article title={title} body={body} published={published} />
       <br />
       <button onClick={deleteArticle}>Delete article</button>
       <br />
-      <Link to={"edit"}>Edit article</Link>
+      <Link to={"edit"} className="link">
+        Edit article
+      </Link>
       <br />
-      <Link to={"/"}>Back to articles</Link>
+      <Link to={"/"} className="link">
+        Back to articles
+      </Link>
     </div>
   );
 }

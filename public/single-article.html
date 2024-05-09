@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Show article</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body onload="loadData()">
+    <h2>Single Article</h2>
     <div id="article"></div>
     <button onclick="deleteArticle()">Delete article</button>
     <a href="index.html">Back to articles</a>
@@ -26,10 +28,12 @@
       var data = await response.json();
       var articleDiv = document.getElementById("article");
       articleDiv.innerHTML = `
+            <div class="article-div">
               <h3>${data.title}</h3>
               <p>${data.body}</p>
               <p>Published: ${data.published}<p>
-              <a href="edit.html?id=${articleId}">Edit article</a>
+            </div>
+            <a href="edit.html?id=${articleId}">Edit article</a>
               `;
     }
 
